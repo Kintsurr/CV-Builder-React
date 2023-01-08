@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import Head from './components/head/Head';
+import Forms from './components/forms/Forms';
 import './App.css';
+import {useRef} from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+ const ref = useRef(null);
+
+  const handleScroll = () => {
+    ref.current?.scrollIntoView({behavior: 'smooth'});
+  };
+  return(
+    <>
+    <Head handleScroll={handleScroll}/>
+    <Forms/>
+    <div ref={ref}></div>
+    </>
+  )
 }
 
 export default App;
